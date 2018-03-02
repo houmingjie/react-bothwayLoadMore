@@ -12,10 +12,10 @@ export default class BothwayDynamicLoader extends Component {
     static propTypes = {
         triggerOffset: PropTypes.number,          //偏差值
         loadEarlier: PropTypes.func.isRequired,   //向上加载历史
-        hasEarlier: PropTypes.bool,                //是否还有历史可以继续加载
+        hasEarlier: PropTypes.bool,               //是否还有历史可以继续加载
         loadLatter: PropTypes.func.isRequired,    //向下加载更多
-        hasLatter: PropTypes.bool,                 //是否还有更多可以继续加载
-        wrapperRef: PropTypes.func,                //返回wrapper元素
+        hasLatter: PropTypes.bool,                //是否还有更多可以继续加载
+        wrapperRef: PropTypes.func,               //返回wrapper元素
     };
 
     constructor(props) {
@@ -26,47 +26,55 @@ export default class BothwayDynamicLoader extends Component {
         }
     };
 
+    earlierLoading = false;
     loadEarlier = async () => {
-        const {earlierLoading} = this.state;
         const {loadEarlier, hasEarlier} = this.props;
-        if (hasEarlier && !earlierLoading) {
+        if (hasEarlier && !this.earlierLoading) {
+            this.earlierLoading = true;
             this.setState({
                 earlierLoading: true
             });
             await loadEarlier();
+            this.earlierLoading = false;
             this.setState({
                 earlierLoading: false
             });
         }
     };
 
+    latterLoading = false;
     loadLatter = async () => {
-        const {latterLoading} = this.state;
         const {loadLatter, hasLatter} = this.props;
-        if (hasLatter && !latterLoading) {
+        if (hasLatter && !this.latterLoading) {
+            this.latterLoading = true;
             this.setState({
                 latterLoading: true
             });
             await loadLatter();
+            this.latterLoading = false;
             this.setState({
                 latterLoading: false
             });
         }
     };
 
-    lastScrollTop = 0;
-    onScroll = (e) => {
-        if (this.silenceScroll) {
-            this.silenceScroll = false;
-            return;
-        }
+    // lastScrollTop = 0;
+
+    onWheel = (e) => {
+        const direction = e.deltaY;
+
+        // if (this.silenceScroll) {
+        // this.silenceScroll = false;
+        // this.lastScrollTop = this._refs.wrapper.scrollTop;
+        // return;
+        // }
 
         let {wrapper, body} = this._refs;
 
-        const thisScrollTop = wrapper.scrollTop;
-        //方向，仅在滚动方向加载
-        const direction = thisScrollTop - this.lastScrollTop;
-        this.lastScrollTop = thisScrollTop;
+        // const thisScrollTop = wrapper.scrollTop;
+        // //方向，仅在滚动方向加载
+        // const direction = thisScrollTop - this.lastScrollTop;
+        // this.lastScrollTop = thisScrollTop;
 
         let {triggerOffset, hasLatter, hasEarlier} = this.props;
         if (!(hasEarlier || hasLatter)) {
@@ -74,26 +82,26 @@ export default class BothwayDynamicLoader extends Component {
         }
 
         if (direction >= 0) {//向下,加载更多
-            if ((body.scrollHeight - wrapper.offsetHeight - thisScrollTop) <= triggerOffset) {
+            if ((body.scrollHeight - wrapper.offsetHeight - wrapper.scrollTop) <= triggerOffset) {
                 this.loadLatter();
             }
         } else {//向上，加载历史
-            if (thisScrollTop <= triggerOffset) {
+            if (wrapper.scrollTop <= triggerOffset) {
                 this.loadEarlier();
             }
         }
     };
 
-    silenceScroll = false;
+    // silenceScroll = false;
 
     //通过该方法设置scrollTop不会触发加载操作
-    silenceSetScrollTop = (scrollTop) => {
-        const {wrapper} = this._refs;
-        if (wrapper) {
-            this.silenceScroll = true;
-            wrapper.scrollTop = scrollTop;
-        }
-    };
+    // silenceSetScrollTop = (scrollTop) => {
+    //     const {wrapper} = this._refs;
+    //     if (wrapper) {
+    //         this.silenceScroll = true;
+    //         wrapper.scrollTop = scrollTop;
+    //     }
+    // };
 
     _refs = {};
 
@@ -157,7 +165,7 @@ export default class BothwayDynamicLoader extends Component {
                      this._refs.wrapper = e;
                      wrapperRef && wrapperRef(e);
                  }}
-                 onScroll={this.onScroll}>
+                 onWheel={this.onWheel}>
                 <div
                     className={bodyClassName}
                     ref={e => this._refs.body = e}

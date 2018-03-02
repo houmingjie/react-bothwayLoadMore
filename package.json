@@ -2,7 +2,12 @@
   "name": "react-bothwayloadmore",
   "version": "0.0.1",
   "description": "react component that support scroll to loadmore",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

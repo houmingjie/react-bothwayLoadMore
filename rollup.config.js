@@ -4,7 +4,7 @@ import babel from 'rollup-plugin-babel';
 import filesize from 'rollup-plugin-filesize';
 
 export default {
-    input: 'index.js',
+    input: 'src/index.js',
     output: {
         file: 'dist/index.js',
         format: 'es'
