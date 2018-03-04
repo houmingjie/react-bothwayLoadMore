@@ -14,6 +14,15 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'index.js',
     },
+    target: 'web',
+    devtool: "source-map",
+    stats: { //object
+        assets: true,
+        colors: true,
+        errors: true,
+        errorDetails: true,
+        hash: true,
+    },
     module: {
         rules: [
             {
