@@ -13,6 +13,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'index.js',
+        libraryTarget: 'umd',
     },
     target: 'web',
     devtool: "source-map",
@@ -49,8 +50,12 @@ module.exports = {
     plugins: [
         extractSass
     ],
-    externals:[
-        'react',
-        'react-dom'
-    ]
+    externals:{
+        react: {
+            root: 'React',
+            commonjs2: 'react',
+            commonjs: 'react',
+            amd: 'react'
+        }
+    }
 }
