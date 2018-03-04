@@ -11,8 +11,5 @@
     ],
     "stage-0",
     "react"
-  ],
-  "plugins": [
-    "external-helpers"
   ]
 }
