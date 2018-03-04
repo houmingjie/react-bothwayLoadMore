@@ -34,10 +34,6 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "rollup-plugin-babel": "^3.0.3",
-    "rollup-plugin-commonjs": "^8.3.0",
-    "rollup-plugin-filesize": "^1.5.0",
-    "rollup-plugin-node-resolve": "^3.0.3",
     "react": "^15.6.2",
     "react-dom": "^15.6.2"
   },

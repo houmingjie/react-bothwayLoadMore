@@ -1,4 +1,4 @@
-// import './index.scss';
+import './assets/index.scss';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
