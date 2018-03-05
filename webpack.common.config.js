@@ -1,14 +1,15 @@
+const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 
 const extractSass = new ExtractTextPlugin({
     filename: "index.css",
     disable: process.env.NODE_ENV === "development"
 });
 
-
 module.exports = {
-    mode: process.env.NODE_ENV || 'development',
     target: 'web',
+    mode: 'development',
     devtool: "source-map",
     stats: { //object
         assets: true,
@@ -27,7 +28,22 @@ module.exports = {
                 test: /\.js$/,
                 exclude: ['node_modules'],
                 use: {
-                    loader: 'babel-loader'
+                    loader: 'babel-loader',
+                    options: {
+                        'presets': [
+                            ['es2015', {
+                                'modules': false
+                            }], 'stage-0', 'react'
+                        ],
+                        'env': {},
+                        'ignore': [
+                            'node_modules/**',
+                            'dist'
+                        ],
+                        // 'plugins': [
+                        //     'transform-decorators-legacy'
+                        // ]
+                    }
                 }
             },
             {

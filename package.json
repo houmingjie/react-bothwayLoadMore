@@ -4,12 +4,15 @@
   "description": "react component that support scroll to loadmore",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
+  "engines": {
+    "node": "~8.0.0"
+  },
   "files": [
     "dist",
     "src"
   ],
   "scripts": {
-    "dev":"npx webpack-dev-server --config webpack.dev.config",
+    "dev": "npx webpack-dev-server --config webpack.dev.config",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -37,7 +40,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.28.10",
-    "extract-text-webpack-plugin": "^3.0.2",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "node-sass": "^4.7.2",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
