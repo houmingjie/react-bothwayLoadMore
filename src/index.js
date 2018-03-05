@@ -1,6 +1,7 @@
 import './assets/index.scss';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import defaultLoadingIcon from './assets/loading.png';
 
 export default class BothwayDynamicLoader extends Component {
     static defaultProps = {
@@ -141,7 +142,7 @@ export default class BothwayDynamicLoader extends Component {
                 loadLatterTrigger =
                     <div className="bothway-loadmore-loading">
                         <spin className="loading-icon" style={{
-                            backgroundImage: 'url(https://x.sankuai.com/public/images/loading_gray.png)'
+                            backgroundImage: `url(${defaultLoadingIcon})`
                         }}>
                         </spin>
                         <spin className="loading-tip">
