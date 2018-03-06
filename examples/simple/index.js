@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import BothwayLoadMore from '../../src/index';
+import '../../src/assets/index.scss';
 import './index.scss';
 
 function deffer(time = 1000) {

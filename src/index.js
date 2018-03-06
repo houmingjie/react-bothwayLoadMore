@@ -1,8 +1,6 @@
-import './assets/index.scss';
 import 'babel-polyfill';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import defaultLoadingIcon from './assets/loading.png';
 
 export default class BothwayDynamicLoader extends Component {
     static defaultProps = {
@@ -120,10 +118,7 @@ export default class BothwayDynamicLoader extends Component {
             if (earlierLoading) {
                 loadEarlierTrigger =
                     <div className="bothway-loadmore-loading">
-                        <spin className="loading-icon" style={{
-                            backgroundImage: 'url(https://x.sankuai.com/public/images/loading_gray.png)'
-                        }}>
-                        </spin>
+                        <spin className="loading-icon"></spin>
                         <spin className="loading-tip">
                             加载中
                         </spin>
@@ -143,10 +138,7 @@ export default class BothwayDynamicLoader extends Component {
             if (latterLoading) {
                 loadLatterTrigger =
                     <div className="bothway-loadmore-loading">
-                        <spin className="loading-icon" style={{
-                            backgroundImage: `url(${defaultLoadingIcon})`
-                        }}>
-                        </spin>
+                        <spin className="loading-icon"></spin>
                         <spin className="loading-tip">
                             加载中
                         </spin>

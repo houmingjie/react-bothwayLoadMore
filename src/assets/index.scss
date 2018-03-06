@@ -8,6 +8,8 @@
     line-height: 30px;
 
     .loading-icon{
+      display: inline-block;
+      background: url(./loading.png);
       animation: 0.85s loadingCircle steps(8) infinite;
       width:16px;
       height: 16px;
@@ -15,6 +17,7 @@
     }
 
     .loading-tip{
+      display: inline-block;
       vertical-align: middle;
       color:rgba(0, 0, 0, 0.38);
       margin-left:10px;
