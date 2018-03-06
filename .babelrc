@@ -15,5 +15,8 @@
   "ignore": [
     "node_modules/**",
     "dist"
+  ],
+  "plugins": [
+    "transform-runtime"
   ]
 }

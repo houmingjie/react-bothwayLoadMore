@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "react component that support scroll to loadmore",
   "main": "./dist/index.js",
-  "module": "./dist/index.js",
+  "module": "./src/index.js",
   "engines": {
     "node": "~8.0.0"
   },
@@ -36,6 +36,7 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.3",
     "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
@@ -52,7 +53,6 @@
     "webpack-dev-server": "^3.1.0"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0",
     "prop-types": "^15.6.1"
   }
 }

@@ -1,4 +1,4 @@
-import 'babel-polyfill';
+import './assets/index.scss';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
@@ -83,7 +83,6 @@ export default class BothwayDynamicLoader extends Component {
 
         if (direction >= 0) {//向下,加载更多
             if ((body.scrollHeight - wrapper.offsetHeight - wrapper.scrollTop) <= triggerOffset) {
-                console.info(body.scrollHeight - wrapper.offsetHeight - wrapper.scrollTop)
                 this.loadLatter();
             }
         } else {//向上，加载历史
