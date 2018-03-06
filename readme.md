@@ -17,8 +17,8 @@
     <DynamicLoader
         wrapperRef={e => this._refs.loaderWrap = e}
         ref={e => this._refs.loader = e}
-        hasLatter={this.state.hasLatter}
-        hasEarlier={this.state.hasEarlier}
+        hasLatter={this.state.hasLatter}   //返回promise
+        hasEarlier={this.state.hasEarlier} //返回promise
         loadLatter={this.loadLatter}
         loadEarlier={this.loadEarlier}
     >

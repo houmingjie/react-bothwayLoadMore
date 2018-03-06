@@ -1,0 +1,26 @@
+.demo {
+  overflow: hidden;
+  height: 100%;
+  .title {
+    height: 50px;
+    line-height: 50px;
+    box-sizing: border-box;
+    margin:0;
+  }
+
+  .list {
+    height: 100%;
+    margin-top: -50px;
+    padding: 50px 20px;
+    box-sizing: border-box;
+    .bothway-loadmore-wrapper {
+      border: 1px solid #ddd;
+      .item {
+        background: royalblue;
+        height: 200px;
+        margin-bottom: 10px;
+      }
+    }
+
+  }
+}

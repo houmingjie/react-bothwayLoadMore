@@ -11,5 +11,9 @@
     ],
     "stage-0",
     "react"
+  ],
+  "ignore": [
+    "node_modules/**",
+    "dist"
   ]
 }
