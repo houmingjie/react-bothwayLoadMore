@@ -23,8 +23,13 @@ export default class extends Component {
     loadEarlier = async () => {
         await deffer();
         const earliestId = this.state.list[0];
+        const {listWrapper} = this._refs;
+        const orgScrollTop = listWrapper.scrollTop;
+        const orgScrollHeight = listWrapper.scrollHeight;
         this.setState({
             list: [earliestId - 3, earliestId - 2, earliestId - 1, ...this.state.list]
+        },() => {
+            listWrapper.scrollTop = orgScrollTop + listWrapper.scrollHeight - orgScrollHeight;
         });
     };
 
@@ -35,6 +40,8 @@ export default class extends Component {
             list: [...this.state.list, lattestId + 1, lattestId + 2, lattestId + 3]
         });
     };
+
+    _refs = {};
 
     render() {
         const {hasLatter, hasEarlier, list} = this.state;
@@ -48,6 +55,7 @@ export default class extends Component {
                         loadEarlier={this.loadEarlier}
                         loadLatter={this.loadLatter}
                         triggerOffset={100}
+                        wrapperRef={e => this._refs.listWrapper = e}
                     >
                         {list.map(item => {
                             item = item + "";
